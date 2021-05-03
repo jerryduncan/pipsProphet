@@ -1,4 +1,4 @@
-# PipsProphet -- Predicting price action with Deep Learning
+# PipsProphet -- Predicting price action with Deep Reinforcement Learning
 
 The forex and synthetic indices market has witnessed huge changes in prices from high, low, low-high and high-low due to fundamental and technical analysis which intends to determine the actual state of price at each point in time-frame, this has led many financial experts in the market to look beyond the market to proffer financial advice to traders across the world.
 

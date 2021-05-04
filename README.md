@@ -33,6 +33,8 @@ As for the reward given to the network backpropagation, each action is rewarded 
 - Closing a position is rewarded with the attained profit 
 - Doing nothing receives zero reward 
 
+![image](https://user-images.githubusercontent.com/41350149/117012921-51849b80-ace7-11eb-93c2-6a0b608a0f9e.png)
+
 # Market simulation
 We created an environment to coordinate the flow of information that reaches the system so that it follows the reinforcement learning paradigm, supplying the system with a state, receiving its response in the form of an action and answering with a new state and reward. Our environment is consistent with the real foreign exchange market, so that its learned behaviour and our measure of its performance would translate to real trading.
 
@@ -57,7 +59,6 @@ For the second and third metrics the profit generated over the test is recorded 
 # Learning Function 
 The role of the learning function is to receive the transitions <i>e<sub>t</sub></i> observed during learning passes and use them to change the Q-Network’s weights in a way that improves its approximation of <i>q</i>
 
-
 # Q-Network
 This network is tasked with computing a function Q(s;W<sub>k</sub>), where W<sub>k</sub> is the set of weights and biases of the network
 at iteration <sub>k</sub>.
@@ -67,6 +68,7 @@ The input layer has a number of neurons defined by the elements in our represent
 The ReLu activation function was chosen due to its documented superiority for training multi-layer neural networks over other widely used activations, such as hyperbolic tangent and logistic sigmoid.
 
 This process will be performed in tandem with the choice of parameter TW to make sure there is a balance between power of the network and number of input variables. Tests will be performed with L1 regularization, L2 regularization and dropout regularization to help prevent overfitting.
+
 
 # Contributing 
 

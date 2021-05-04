@@ -11,9 +11,9 @@ Our architecture involves building a feedforward backprogrational neural network
 
 The state of the hidden layers was set experimentally, while the three linear output neurons are inherent to our system design: each representing the Q-value of a give action.
 
-Our network interacts within a simulated market environment in discrete  steps t = 0,1,2,... receiving a state vector S<sub>t</sub> as input at each of those steps. After a forward propagation, each of the three linear neurons outputs the Q-network current estimate for an action value <i>Q<sub>an</sub> (S<sub>t</sub>, W<sub>k</sub>)</i> for each of the three possible outcomes n <i>E</i> [0,1,2], where W<sub>k</sub> represent the set of network weights after k updates.
+Our network interacts within a simulated market environment in discrete  steps t = 0,1,2,... receiving a state vector S<sub>t</sub> as input at each of those steps. After a forward propagation, each of the three linear neurons outputs the Q-network current estimate for an action value ![equation](https://latex.codecogs.com/gif.latex?Q_%7Ban%7D%28S_%7Bt%7D%2CW_%7Bk%7D%29) for each of the three possible outcomes ![equation](https://latex.codecogs.com/gif.latex?n%20%5Cvarepsilon%20%5B0%2C1%2C2%5D), where W<sub>k</sub> represent the set of network weights after k updates.
 
-The estimates <i>Q<sub>an</sub> (S<sub>t</sub>, W<sub>k</sub>)</i> are fed to a e-greedy action selection method which selects the action choice for step t as either <i>A<sub>t</sub> = arg max<sub>a</sub></i> <i>Q<sub>a</sub> (S<sub>t</sub>, W<sub>k</sub>).</i>
+The estimates ![equation](https://latex.codecogs.com/gif.latex?Q_%7Ban%7D%28S_%7Bt%7D%2CW_%7Bk%7D%29) are fed to a e-greedy action selection method which selects the action choice for step t as either ![equation](https://latex.codecogs.com/gif.latex?A_%7Bt%7D%20%3D%20argmax_%7Ba%7DQ_%7Ban%7D%28S_%7Bt%7D%2CW_%7Bk%7D%29)
 
 There is an external influence on the agent to invest <i>position_size</i> of the choosen asset at a time, a value set by the user, leaving it with five actions: open long position, open short position, close long position, close short position and do nothing.
 

@@ -33,7 +33,6 @@ As for the reward given to the network backpropagation, each action is rewarded 
 - Closing a position is rewarded with the attained profit 
 - Doing nothing receives zero reward 
 
-<<<<<<< HEAD
 # Market simulation
 We created an environment to coordinate the flow of information that reaches the system so that it follows the reinforcement learning paradigm, supplying the system with a state, receiving its response in the form of an action and answering with a new state and reward. Our environment is consistent with the real foreign exchange market, so that its learned behaviour and our measure of its performance would translate to real trading.
 
@@ -58,10 +57,16 @@ For the second and third metrics the profit generated over the test is recorded 
 # Learning Function 
 The role of the learning function is to receive the transitions <i>e<sub>t</sub></i> observed during learning passes and use them to change the Q-Network’s weights in a way that improves its approximation of <i>q</i>
 
-=======
-![image](https://user-images.githubusercontent.com/41350149/117012921-51849b80-ace7-11eb-93c2-6a0b608a0f9e.png)
->>>>>>> 9a2fcc4153b8a18b3dc32e4fad5c907c7c280e41
 
+# Q-Network
+This network is tasked with computing a function Q(s;W<sub>k</sub>), where W<sub>k</sub> is the set of weights and biases of the network
+at iteration <sub>k</sub>.
+
+The input layer has a number of neurons defined by the elements in our representation of the state <i>s</i> of the market, which per the hyper-parameter chosen in 148 input neurons, which is followed by three hidden layers with 20 ReLU neurons each.
+
+The ReLu activation function was chosen due to its documented superiority for training multi-layer neural networks over other widely used activations, such as hyperbolic tangent and logistic sigmoid.
+
+This process will be performed in tandem with the choice of parameter TW to make sure there is a balance between power of the network and number of input variables. Tests will be performed with L1 regularization, L2 regularization and dropout regularization to help prevent overfitting.
 
 # Contributing 
 

@@ -59,6 +59,8 @@ For the second and third metrics the profit generated over the test is recorded 
 # Learning Function 
 The role of the learning function is to receive the transitions <i>e<sub>t</sub></i> observed during learning passes and use them to change the Q-Network’s weights in a way that improves its approximation of <i>q</i>
 
+![equation](https://latex.codecogs.com/gif.latex?E_%7Bt%7D%28W_%7Bk%7D%29%20%3D%20%7C%7Ca_%7Bt%2Ck%7D%5E%7BL%7D%20-%20d_%7Bt%7D%7C%7C%5E%7B2%7D%20%3D%20%28Q_%7BAt%7D%28S_%7Bt%7D%2C%20W_%7Bk%7D%29%20-%20%28R_%7Bt&plus;1%7D%20&plus;%20%5Cgamma%20maxQ_%7Ba%7D%28S_%7Bt&plus;1%7D%2C%20W_%7Bk%7D%29%29%29%5E%7B2%7D)
+
 # Q-Network
 This network is tasked with computing a function Q(s;W<sub>k</sub>), where W<sub>k</sub> is the set of weights and biases of the network
 at iteration <sub>k</sub>.

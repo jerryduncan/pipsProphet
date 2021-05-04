@@ -15,7 +15,7 @@ Our network interacts within a simulated market environment in discrete  steps t
 
 The estimates <i>Q<sub>an</sub> (S<sub>t</sub>, W<sub>k</sub>)</i> are fed to a e-greedy action selection method which selects the action choice for step t as either <i>A<sub>t</sub> = arg max<sub>a</sub></i> <i>Q<sub>a</sub> (S<sub>t</sub>, W<sub>k</sub>).</i>
 
-There is an external influence on the agent to invest position_size of the choosen asset at a time, a value set by the user, leaving it with five actions: open long position, open short position, close long position, close short position and do nothing.
+There is an external influence on the agent to invest <i>position_size</i> of the choosen asset at a time, a value set by the user, leaving it with five actions: open long position, open short position, close long position, close short position and do nothing.
 
 The selected action At is then received by the simulated market environment. With role to provide a acurate simulation of the foreign exchange market and coordinate the flow of information that reaches the system so that it follows the reinforcement learning paradigm
 
@@ -32,6 +32,32 @@ As for the reward given to the network backpropagation, each action is rewarded 
 - keeping a position open is rewarded by the fluctuation of the position unrealized profit;
 - Closing a position is rewarded with the attained profit 
 - Doing nothing receives zero reward 
+
+# Market simulation
+We created an environment to coordinate the flow of information that reaches the system so that it follows the reinforcement learning paradigm, supplying the system with a state, receiving its response in the form of an action and answering with a new state and reward. Our environment is consistent with the real foreign exchange market, so that its learned behaviour and our measure of its performance would translate to real trading.
+
+The market simulation follows prices from a tick dataset T = {T0, .., TD}. The system is only allowed to make a decision every time <i>skip_ticks</i> ticks. At each step/interaction <i>t</i> the market environment is at the price in tick T<sub>i=t·time_skip+b,</sub> where <i>b</i> is the chosen starting tick for the first interaction, and sends the system the state S<sub>t</sub>
+
+A response is received in the form of an action signal A<sub>t</sub>, after which the market environment skips to the price in T<sub>i+time_skip</sub> and drafts a new state S<sub>t+1</sub> and a scalar reward R<sub>t+1</sub> for the action A<sub>t</sub>, which are sent to the system
+
+These interactions continue until the end of dataset is reached, completing the pass through the dataset.
+
+# Training Process
+The training process is structured into epochs. Each epoch has four phases, a structured learning phase and three phases to assess the learning progress:
+
+- Training pass over a training dataset (learning phase)
+- Evaluation of Q-values over random set of states (first metric)
+- Test over the training dataset (second metric)
+- Test over the validation dataset (third metric)
+
+For the first metric, states are collected by running a random policy through the training dataset and then at each epoch we evaluate the Q-network's average estimated Q-value for that set of states. A smooth growth in this metric, with no divergence validates that the Q-Network is learning and stable.
+
+For the second and third metrics the profit generated over the test is recorded and the evolution of that profit over the epocsh is the indicator of how well the system is learning
+
+# Learning Function 
+The role of the learning function is to receive the transitions <i>e<sub>t</sub></i> observed during learning passes and use them to change the Q-Network’s weights in a way that improves its approximation of <i>q</i>
+
+
 
 # Contributing 
 

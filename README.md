@@ -71,7 +71,7 @@ The ReLu activation function was chosen due to its documented superiority for tr
 
 This process will be performed in tandem with the choice of parameter TW to make sure there is a balance between power of the network and number of input variables. Tests will be performed with L1 regularization, L2 regularization and dropout regularization to help prevent overfitting.
 
-
+![equation](https://latex.codecogs.com/gif.latex?a_%7Bj%7D%5E%7B4%7D%20%3D%20net_%7Bj%7D%5E%7B4%7D%20%3D%20%5Csum_%7Bt%3D1%7D%5E%7Bn%7Da_%7Bt%7D%5E%7B3%7D.w_%7Bji%7D%5E%7B4%7D&plus;b_%7Bj%7D%5E%7B4%7D)
 # Contributing 
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

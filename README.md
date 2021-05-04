@@ -11,9 +11,9 @@ Our architecture involves building a feedforward backprogrational neural network
 
 The state of the hidden layers was set experimentally, while the three linear output neurons are inherent to our system design: each representing the Q-value of a give action.
 
-Our network interacts within a simulated market environment in discrete  steps t = 0,1,2,... receiving a state vector St as input at each of those steps. After a forward propagation, each of the three linear neurons outputs the Q-network current estimate for an action value Qan (St, Wk) for each of the three possible outcomes n E [0,1,2], where Wk represent the set of network weights after k updates.
+Our network interacts within a simulated market environment in discrete  steps t = 0,1,2,... receiving a state vector St as input at each of those steps. After a forward propagation, each of the three linear neurons outputs the Q-network current estimate for an action value Qan (St, Wk) for each of the three possible outcomes n E [0,1,2], where W<sub>k</sub> represent the set of network weights after k updates.
 
-The estimates Qan (St, Wk) are fed to a e-greedy action selection method which selects the action choice for step t as either A<sub>t<sub> = argmax<sub>a<sub> Qa (St, Wk).
+The estimates Qan (St, Wk) are fed to a e-greedy action selection method which selects the action choice for step t as either A<sub>t</sub> = arg max<sub>a</sub> <i>Q<sub>a</sub> (S<sub>t</sub>, W<sub>k</sub>).</i>
 
 There is an external influence on the agent to invest position_size of the choosen asset at a time, a value set by the user, leaving it with five actions: open long position, open short position, close long position, close short position and do nothing.
 
@@ -22,9 +22,9 @@ The selected action At is then received by the simulated market environment. Wit
 Each state simulated by the environment conditions includes the following information
 
 - Type of current open position;
-- Value of any open position in view of simulated market current prices Bidi and Ask<sub>i<sub>, where i is an index over the entries in the dataset used by the market ;
+- Value of any open position in view of simulated market current prices Bidi and Ask<sub>i</sub>, where <i>i</i> is an index over the entries in the dataset used by the market ;
 - Current size of trading account;
-- Feature vector F<sub>i<sub>; (created using the market data entries, by the preprocessing stage inspired by the technical analysis approach)
+- Feature vector F<sub>i</sub>; (created using the market data entries, by the preprocessing stage inspired by the technical analysis approach)
 
 As for the reward given to the network backpropagation, each action is rewarded as follows:
 

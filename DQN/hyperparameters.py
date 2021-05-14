@@ -1,8 +1,7 @@
-env = ForexEnv()
+import numpy as np 
+import tensorflow as tf
+import matplotlib.pyplot as plt 
+import functools
 
-RL_agent = DQNAgent(
-    learning_rate=
-    batch_size=
-    buffer_size=
-    num_batches=
-)
+def hyperparameters():
+    pass

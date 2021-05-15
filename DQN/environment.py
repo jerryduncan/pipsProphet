@@ -12,6 +12,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 import tensorflow as tf
 import tf_agents
+import pandas_datareader as data_reader
+
+from tqdm import tqdm_notebook, tqdm
+from collections import deque
+
 
 #loading up tensrflow_agents dependencies 
 from tf_agents.agents.dqn import dqn_agent
@@ -39,3 +44,26 @@ class ForexEnv(Environment):
     def __init__(self, config):
         pass 
 
+class ReinforceEnvironment(Environment):
+    def __init__(self, config):
+        pass
+
+
+
+if __name__=='__main__':
+    nsteps = 5
+    np.random.seed(448)
+
+    env = ForexEnv(mode = 'train')
+    time, obs, price = env.reset()
+    t = 0
+    
+    done = False 
+    while not done:
+        action = np.random.randint(3)
+        time, obs, price, done = env.setp(action)
+        t += 1
+        print(time)
+        print(obs.shape)
+        print(price)
+        done = done or t==nsteps

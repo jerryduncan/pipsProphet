@@ -21,3 +21,12 @@ class Extractor:
         self.df['bar_mov'] = self.df['close'] - self.df['close'].shift(1)
 
         return self.df  
+
+    
+    def add_adj_features(self):
+        self.df['adj_open'] = self.df['open'] / self.close
+        self.df['adj_high'] = self.df['high'] / self.close
+        self.df['adj_low'] = self.df['low'] / self.close
+        self.df['adj_close'] = self.df['close'] / self.close
+        
+        return self.df 

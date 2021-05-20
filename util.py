@@ -3,7 +3,7 @@ from rl.core import Processor
 from rl.util import WhiteningNormalizer 
 from sklearn.preprocessing import MinMaxScaler, StandardScaler 
 
-
+ADDITIONAL_STATE = 5
 class Normalizerprocessor(Processor):
     def __init__(self):
         self.scaler = StandardScaler()

@@ -9,3 +9,17 @@ import pandas as pd
 from pandas import Series, DataFrame
 from pandas.stats import moments 
 
+#stochastic oscillator indator 
+
+#bollinger bands indicator 
+
+#ichimoku cloud indicator 
+
+#simple moving average 
+def simple_moving_average(data,ndays):
+    SMA=pd.Series(pd.rolling_mean(data['Close'],n),name='SMA')
+    data=data.join(SMA)
+    return data
+#money flow index
+
+#envelops

@@ -9,6 +9,7 @@ import pandas as pd
 from pandas import Series, DataFrame
 from pandas.stats import moments 
 
+
 #stochastic oscillator indator 
 def stochastic_oscillator_a(df):
     SOa = pd.Series((df['close'] - df['low']) / (df['high'] - df['low']), name='SO%a')
@@ -22,6 +23,7 @@ def stochastic_oscillator_b(df, n):
     SOb = pd.Series(SOa.ewm(span=n, min_periods=n).mean(), name='SO%b')
     df = df.join(SOb)
     return df
+
 
 #bollinger bands indicator 
 def bollinger_bands(df, n, std, add_average=True):
@@ -52,10 +54,25 @@ def ichimoku(s, n1=9, n2=26, n3=52):
 
 
 #simple moving average 
-def simple_moving_average(data,ndays):
-    SMA=pd.Series(pd.rolling_mean(data['Close'],n),name='SMA')
-    data=data.join(SMA)
-    return data
-#money flow index
+def simple_moving_average(price, period=25):
+    weights = np.repeat(1.0, period)/period
+    sma = np.convolve(price, weights, 'valid')
+    return sma
 
-#envelops
+
+#money flow index
+def money_flow_index(df, n):
+    PP = (df['high'] + df['low'] + df['close']) / 3
+    i = 0
+    PosMF = [0]
+    while i < df.index[-1]:
+        if PP[i + 1] > PP[i]:
+            PosMF.append(PP[i + 1] * df.loc[i + 1, 'volume'])
+        else:
+            PosMF.append(0)
+        i = i + 1
+    PosMF = pd.Series(PosMF)
+    TotMF = PP * df['volume']
+    MFR = pd.Series(PosMF / TotMF)
+    MFI = pd.Series(MFR.rolling(n, min_periods=n).mean())
+    return MFI

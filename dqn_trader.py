@@ -15,10 +15,11 @@ from rl.policy import BoltzmannPolicy, EpsGreedyQPolicy
 from rl.memory import SequentialMemory 
 
 #working with trader environment
-from TraderEnv import OhlcvEnv
+from TraderView import OhlcvEnv
 from util import Normalizerprocessor 
 
-#build model 
+#ultulizing trader environment
+
 
 
 if __name__ == '__main__':

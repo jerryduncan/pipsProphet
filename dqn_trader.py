@@ -6,13 +6,23 @@ from __future__ import division
 import numpy as np 
 
 #import keras 
-import tensorflow as tensorflow
+import tensorflow as tf 
 from tensorflow import keras
 
+#from keras.models import Sequential
+#from keras.layers import Dense, Activation, Flatten, LSTM 
+#from keras.optimizers import Adam
+
+# tensorflow agent
+from tf_agents.agents.dqn import dqn_agent
+from tf_agents.policies import random_tf_policy
+from tf_agents.eval import metric_utils 
+from tf_agents.metrics import tf_metrics
+
 #import keras-rl agent 
-from rl.agents.dqn import DQNAgent 
-from rl.policy import BoltzmannPolicy, EpsGreedyQPolicy 
-from rl.memory import SequentialMemory 
+#from rl.agents.dqn import DQNAgent 
+#from rl.policy import BoltzmannPolicy, EpsGreedyQPolicy 
+#from rl.memory import SequentialMemory 
 
 #working with trader environment
 from TraderView import OhlcvEnv

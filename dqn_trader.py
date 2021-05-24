@@ -21,6 +21,5 @@ from util import Normalizerprocessor
 #ultulizing trader environment
 
 
-
 if __name__ == '__main__':
     main()

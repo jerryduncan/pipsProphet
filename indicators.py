@@ -7,7 +7,7 @@ from functools import wraps
 import numpy as np 
 import pandas as pd 
 from pandas import Series, DataFrame
-from pandas.stats import moments 
+#from pandas.stats import moments 
 
 
 #stochastic oscillator indator 

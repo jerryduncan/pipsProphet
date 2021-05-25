@@ -19,7 +19,7 @@ from collections import deque
 
 
 #loading up tensrflow_agents dependencies 
-from tf_agents.agents.dqn import dqn_agent
+from tf_agents.agents.dqn import dqn_agent 
 from tf_agents.environments import py_environment
 from tf_agents.environments import tf_environment
 from tf_agents.environments import tf_py_environment

@@ -41,7 +41,9 @@ https://www.learndatasci.com/tutorials/reinforcement-q-learning-scratch-python-o
 
 Train a Deep Q Network with TF-Agents https://www.tensorflow.org/agents/tutorials/1_dqn_tutorial
 
+Deep Reinforcement Learning for Automated Stock Trading https://towardsdatascience.com/deep-reinforcement-learning-for-automated-stock-trading-f1dad0126a02
 
+Trading Environment(OpenAI Gym) + DDQN (Keras-RL) https://github.com/miroblog/deep_rl_trader
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 

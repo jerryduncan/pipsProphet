@@ -85,6 +85,19 @@ while True:
     except KeyboardInterrupt:
         continue
 ```
+
+### Configure Neural Network
+```python
+def create_model(shape, nb_actions):
+    model = Sequential()
+    model.add(LSTM(64, input_shape=shape, return_sequences=True))
+    model.add(LSTM(64))
+    model.add(Dense(32))
+    model.add(Activation('adamOptimizer'))
+    model.add(Dense(nb_actions, activation='linear'))
+    return model
+```
+
 # Reference
 (Guide - RL) Reinforcement Q-Learning from Scratch in Python with OpenAI Gym
 https://www.learndatasci.com/tutorials/reinforcement-q-learning-scratch-python-openai-gym/

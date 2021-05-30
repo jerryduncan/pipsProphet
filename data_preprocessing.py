@@ -1,13 +1,8 @@
-from __future__ import absolute_import 
-from __future__ import unicode_literals 
-from __future__ import print_function
-from __future__ import division 
-
 import numpy as np 
 import pandas as pd 
 from sklearn.preprocessing import MinMaxScaler 
 
-class Extractor:
+class FeatureExtractor:
     def __init__(self, df):
         self.df = df
         self.open = df['open'].astype('float')

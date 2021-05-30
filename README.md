@@ -45,6 +45,7 @@ Deep Reinforcement Learning for Automated Stock Trading https://towardsdatascien
 
 Trading Environment(OpenAI Gym) + DDQN (Keras-RL) https://github.com/miroblog/deep_rl_trader
 
+# Pull requests 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.

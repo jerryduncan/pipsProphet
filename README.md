@@ -37,9 +37,10 @@ As for the reward given to the network backpropagation, each action is rewarded 
 
 # Intialize Environment and Agent
 ```python
-ENV_NAME = 'OHLCV-v0'
+    ENV_NAME = 'OHLCV-v0'
     TIME_STEP = 30
 
+    #load path
     TRAIN_PATH = "./data/train"
     TEST_PATH = "./data/test"
     env_train = OhlcvEnv(TIME_STEP, path=TRAIN_PATH)
@@ -48,13 +49,14 @@ ENV_NAME = 'OHLCV-v0'
     np.random.seed(456)
     env.seed(562)
 
+    # create model
     nb_actions = env.action_space.n
     model = model_create(shape=env.shape, nb_actions=nb_actions)
     print(model.summary())
 
     # finally, we configure and compile our agent
     memory = SequentialMemory(limit=50000, window_length=TIME_STEP)
-    # policy = BoltzmannQPolicy()
+    
     policy = EpsGreedyQPolicy()
     # enable the dueling network 
     dqn = DQNAgent(model=model, nb_actions=nb_actions, memory=memory, nb_steps_warmup=200,
@@ -64,7 +66,25 @@ ENV_NAME = 'OHLCV-v0'
 ```
 
 ### Train and Validate 
-
+```python 
+while True:
+    # train
+    dqn.fit(env, nb_steps=5500, nb_max_episode_steps=10000, visualize=False, verbose=2)
+    try:
+        # validate
+        info = dqn.test(env_test, nb_episodes=1, visualize=False)
+        n_long, n_short, total_reward, portfolio = info['n_trades']['long'], info['n_trades']['short'], info[
+            'total_reward'], int(info['portfolio'])
+        np.array([info]).dump(
+            './info/duel_dqn_{0}_weights_{1}LS_{2}_{3}_{4}.info'.format(ENV_NAME, portfolio, n_long, n_short,
+                                                                        total_reward))
+        dqn.save_weights(
+            './model/duel_dqn_{0}_weights_{1}LS_{2}_{3}_{4}.h5f'.format(ENV_NAME, portfolio, n_long, n_short,
+                                                                        total_reward),
+            overwrite=True)
+    except KeyboardInterrupt:
+        continue
+```
 # Reference
 (Guide - RL) Reinforcement Q-Learning from Scratch in Python with OpenAI Gym
 https://www.learndatasci.com/tutorials/reinforcement-q-learning-scratch-python-openai-gym/

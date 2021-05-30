@@ -37,6 +37,7 @@ As for the reward given to the network backpropagation, each action is rewarded 
 
 # Reference
 (Guide - RL) Reinforcement Q-Learning from Scratch in Python with OpenAI Gym
+
 https://www.learndatasci.com/tutorials/reinforcement-q-learning-scratch-python-openai-gym/
 
 

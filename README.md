@@ -35,13 +35,13 @@ As for the reward given to the network backpropagation, each action is rewarded 
 
 ![image](https://user-images.githubusercontent.com/41350149/117012921-51849b80-ace7-11eb-93c2-6a0b608a0f9e.png)
 
-# Intialize Environment 
+# Intialize Environment and Agent
 ```python
 ENV_NAME = 'OHLCV-v0'
     TIME_STEP = 30
 
-    TRAIN_PATH = ""
-    TEST_PATH = ""
+    TRAIN_PATH = "./data/train"
+    TEST_PATH = "./data/test"
     env_train = OhlcvEnv(TIME_STEP, path=TRAIN_PATH)
     env_test = OhlcvEnv(TIME_STEP, path=TEST_PATH)
 
@@ -62,6 +62,8 @@ ENV_NAME = 'OHLCV-v0'
                    processor=Normalizerprocessor())
     dqn.compile(Adam(lr=1e-3), metrics=['mae'])
 ```
+
+### Train and Validate 
 
 # Reference
 (Guide - RL) Reinforcement Q-Learning from Scratch in Python with OpenAI Gym

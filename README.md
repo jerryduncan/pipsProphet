@@ -102,13 +102,17 @@ def create_model(shape, nb_actions):
 (Guide - RL) Reinforcement Q-Learning from Scratch in Python with OpenAI Gym
 https://www.learndatasci.com/tutorials/reinforcement-q-learning-scratch-python-openai-gym/
 
-Train a Deep Q Network with TF-Agents https://www.tensorflow.org/agents/tutorials/1_dqn_tutorial
+Train a Deep Q Network with TF-Agents 
+https://www.tensorflow.org/agents/tutorials/1_dqn_tutorial
 
-Deep Reinforcement Learning for Automated Stock Trading https://towardsdatascience.com/deep-reinforcement-learning-for-automated-stock-trading-f1dad0126a02
+Deep Reinforcement Learning for Automated Stock Trading 
+https://towardsdatascience.com/deep-reinforcement-learning-for-automated-stock-trading-f1dad0126a02
 
-Trading Environment(OpenAI Gym) + DDQN (Keras-RL) https://github.com/miroblog/deep_rl_trader
+Trading Environment(OpenAI Gym) + DDQN (Keras-RL) 
+https://github.com/miroblog/deep_rl_trader
 
-【莫烦Python】强化学习 Reinforcement Learning  https://www.bilibili.com/video/BV13W411Y75P?from=search&seid=13844167983297755236
+【莫烦Python】强化学习 Reinforcement Learning  
+https://www.bilibili.com/video/BV13W411Y75P?from=search&seid=13844167983297755236
 
 # Pull requests 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

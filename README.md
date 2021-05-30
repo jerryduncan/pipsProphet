@@ -93,7 +93,7 @@ def create_model(shape, nb_actions):
     model.add(LSTM(64, input_shape=shape, return_sequences=True))
     model.add(LSTM(64))
     model.add(Dense(32))
-    model.add(Activation('adamOptimizer'))
+    model.add(Activation('adam'))
     model.add(Dense(nb_actions, activation='linear'))
     return model
 ```

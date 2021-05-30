@@ -35,6 +35,34 @@ As for the reward given to the network backpropagation, each action is rewarded 
 
 ![image](https://user-images.githubusercontent.com/41350149/117012921-51849b80-ace7-11eb-93c2-6a0b608a0f9e.png)
 
+# Intialize Environment 
+```
+ENV_NAME = 'OHLCV-v0'
+    TIME_STEP = 30
+
+    TRAIN_PATH = ""
+    TEST_PATH = ""
+    env_train = OhlcvEnv(TIME_STEP, path=TRAIN_PATH)
+    env_test = OhlcvEnv(TIME_STEP, path=TEST_PATH)
+
+    np.random.seed(456)
+    env.seed(562)
+
+    nb_actions = env.action_space.n
+    model = model_create(shape=env.shape, nb_actions=nb_actions)
+    print(model.summary())
+
+    # finally, we configure and compile our agent
+    memory = SequentialMemory(limit=50000, window_length=TIME_STEP)
+    # policy = BoltzmannQPolicy()
+    policy = EpsGreedyQPolicy()
+    # enable the dueling network 
+    dqn = DQNAgent(model=model, nb_actions=nb_actions, memory=memory, nb_steps_warmup=200,
+                   enable_dueling_network=True, dueling_type='avg', target_model_update=1e-2, policy=policy,
+                   processor=Normalizerprocessor())
+    dqn.compile(Adam(lr=1e-3), metrics=['mae'])
+```
+
 # Reference
 (Guide - RL) Reinforcement Q-Learning from Scratch in Python with OpenAI Gym
 https://www.learndatasci.com/tutorials/reinforcement-q-learning-scratch-python-openai-gym/

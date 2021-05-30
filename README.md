@@ -35,44 +35,8 @@ As for the reward given to the network backpropagation, each action is rewarded 
 
 ![image](https://user-images.githubusercontent.com/41350149/117012921-51849b80-ace7-11eb-93c2-6a0b608a0f9e.png)
 
-# Market simulation
-We created an environment to coordinate the flow of information that reaches the system so that it follows the reinforcement learning paradigm, supplying the system with a state, receiving its response in the form of an action and answering with a new state and reward. Our environment is consistent with the real foreign exchange market, so that its learned behaviour and our measure of its performance would translate to real trading.
 
-The market simulation follows prices from a tick dataset T = {T0, .., TD}. The system is only allowed to make a decision every time <i>skip_ticks</i> ticks. At each step/interaction <i>t</i> the market environment is at the price in tick T<sub>i=t·time_skip+b,</sub> where <i>b</i> is the chosen starting tick for the first interaction, and sends the system the state S<sub>t</sub>
 
-A response is received in the form of an action signal A<sub>t</sub>, after which the market environment skips to the price in T<sub>i+time_skip</sub> and drafts a new state S<sub>t+1</sub> and a scalar reward R<sub>t+1</sub> for the action A<sub>t</sub>, which are sent to the system
-
-These interactions continue until the end of dataset is reached, completing the pass through the dataset.
-
-# Training Process
-The training process is structured into epochs. Each epoch has four phases, a structured learning phase and three phases to assess the learning progress:
-
-- Training pass over a training dataset (learning phase)
-- Evaluation of Q-values over random set of states (first metric)
-- Test over the training dataset (second metric)
-- Test over the validation dataset (third metric)
-
-For the first metric, states are collected by running a random policy through the training dataset and then at each epoch we evaluate the Q-network's average estimated Q-value for that set of states. A smooth growth in this metric, with no divergence validates that the Q-Network is learning and stable.
-
-For the second and third metrics the profit generated over the test is recorded and the evolution of that profit over the epocsh is the indicator of how well the system is learning
-
-# Learning Function 
-The role of the learning function is to receive the transitions <i>e<sub>t</sub></i> observed during learning passes and use them to change the Q-Network’s weights in a way that improves its approximation of <i>q</i>
-
-![equation](https://latex.codecogs.com/gif.latex?E_%7Bt%7D%28W_%7Bk%7D%29%20%3D%20%7C%7Ca_%7Bt%2Ck%7D%5E%7BL%7D%20-%20d_%7Bt%7D%7C%7C%5E%7B2%7D%20%3D%20%28Q_%7BAt%7D%28S_%7Bt%7D%2C%20W_%7Bk%7D%29%20-%20%28R_%7Bt&plus;1%7D%20&plus;%20%5Cgamma%20maxQ_%7Ba%7D%28S_%7Bt&plus;1%7D%2C%20W_%7Bk%7D%29%29%29%5E%7B2%7D)
-
-# Q-Network
-This network is tasked with computing a function Q(s;W<sub>k</sub>), where W<sub>k</sub> is the set of weights and biases of the network
-at iteration <sub>k</sub>.
-
-The input layer has a number of neurons defined by the elements in our representation of the state <i>s</i> of the market, which per the hyper-parameter chosen in 148 input neurons, which is followed by three hidden layers with 20 ReLU neurons each.
-
-The ReLu activation function was chosen due to its documented superiority for training multi-layer neural networks over other widely used activations, such as hyperbolic tangent and logistic sigmoid.
-
-This process will be performed in tandem with the choice of parameter TW to make sure there is a balance between power of the network and number of input variables. Tests will be performed with L1 regularization, L2 regularization and dropout regularization to help prevent overfitting.
-
-![equation](https://latex.codecogs.com/gif.latex?a_%7Bj%7D%5E%7B4%7D%20%3D%20net_%7Bj%7D%5E%7B4%7D%20%3D%20%5Csum_%7Bt%3D1%7D%5E%7Bn%7Da_%7Bt%7D%5E%7B3%7D.w_%7Bji%7D%5E%7B4%7D&plus;b_%7Bj%7D%5E%7B4%7D)
-# Contributing 
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 

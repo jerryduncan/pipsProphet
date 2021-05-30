@@ -36,7 +36,7 @@ As for the reward given to the network backpropagation, each action is rewarded 
 ![image](https://user-images.githubusercontent.com/41350149/117012921-51849b80-ace7-11eb-93c2-6a0b608a0f9e.png)
 
 # Intialize Environment 
-```
+```python
 ENV_NAME = 'OHLCV-v0'
     TIME_STEP = 30
 

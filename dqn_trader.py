@@ -30,8 +30,8 @@ def main():
     ENV_NAME = 'OHLCV-v0'
     TIME_STEP = 30
 
-    TRAIN_PATH = ""
-    TEST_PATH = ""
+    TRAIN_PATH = "./data/train"
+    TEST_PATH = "./data/test"
     env_train = OhlcvEnv(TIME_STEP, path=TRAIN_PATH)
     env_test = OhlcvEnv(TIME_STEP, path=TEST_PATH)
 
